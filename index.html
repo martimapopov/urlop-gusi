@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odliczanie do urlopu Gusi 🧳</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Monopoli_Puglia_Beach.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+
+    #countdown {
+      font-size: 2.5em;
+      margin-bottom: 1em;
+    }
+
+    .icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .icons img {
+      width: 150px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #fff5;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      #countdown { font-size: 1.8em; }
+      .icons img { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Odliczanie do urlopu Gusi ✈️</h1>
+    <div id="countdown"></div>
+    <h2>Monopoli, Apulia czeka! 🇮🇹</h2>
+    <div class="icons">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Pumo_pugliese.jpg/512px-Pumo_pugliese.jpg" alt="Pumo – symbol Apulii">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Glass_of_Red_Wine.jpg" alt="Wino">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Spaghetti_alle_vongole.jpg" alt="Owoce morza">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Monopoli_coast.jpg" alt="Plaża Monopoli">
+    </div>
+  </div>
+
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    const vacationDate = new Date('2025-07-12T00:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = vacationDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "Gusia już na urlopie! 🏖️🍷";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `${days} dni, ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
